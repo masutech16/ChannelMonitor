@@ -1,0 +1,22 @@
+{
+  "name": "channelmonitor",
+  "version": "1.0.0",
+  "description": "Discordのチャンネルを監視してユーザーが入ってきたら通知を流すプログラムです",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/masutech16/ChannelMonitor.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/masutech16/ChannelMonitor/issues"
+  },
+  "homepage": "https://github.com/masutech16/ChannelMonitor#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
