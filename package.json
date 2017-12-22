@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/masutech16/ChannelMonitor#readme",
   "dependencies": {
-    "express": "^4.16.2"
+    "discord.js": "^11.2.1",
+    "opusscript": "0.0.6"
   }
 }
