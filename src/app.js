@@ -1,6 +1,10 @@
 const Discord = require('discord.js');
-const Twitter = require('twitter');
 const client = new Discord.Client();
+
+const Twitter = require('twitter');
+
+const express = require('express');
+const app = express();
 
 const shintyokuID = "306805850184351744";
 const testID = "393626765853065219"
@@ -28,7 +32,16 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
     }
 });
 
+// クラッシュ対策のためにrootでアクセスを受け付ける
+app.get("/", (req, res) => {
+    res.send("This is a channel monitor bot page");
+})
+
 client.login(token);
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+    console.log('listening on ' + port);
+})
 
 //function
 const tweet = (text) => {
