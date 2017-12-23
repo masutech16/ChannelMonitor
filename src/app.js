@@ -19,10 +19,10 @@ client.on('ready', () => {
 });
 
 client.on('voiceStateUpdate', (oldMember, newMember) => {
-    if(newMember.voiceChannelID === shintyokuID) {
+    if(newMember.voiceChannelID === testID) {
         const text = newMember.displayName + "さんが入室しました";
         tweet(text);
-    } else if(oldMember.voiceChannelID === shintyokuID) {
+    } else if(oldMember.voiceChannelID === testID) {
         const text = oldMember.displayName + "さんが退室しました";
         tweet(text);
     }
