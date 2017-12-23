@@ -2,6 +2,9 @@ const Discord = require('discord.js');
 const Twitter = require('twitter');
 const client = new Discord.Client();
 
+const shintyokuID = "306805850184351744";
+const testID = "393626765853065219"
+
 // Token等の取得
 const token = process.env.CM_DISCORD_TOKEN;
 var twClient = new Twitter({
@@ -16,11 +19,24 @@ client.on('ready', () => {
 });
 
 client.on('voiceStateUpdate', (oldMember, newMember) => {
-    const text = newMember.displayName + "さんが入室しました";
-    twClient.post("statuses/update", {status: text}, (err, tweet, res) => {
-        console.log("tweet: "+text);
-    })
-    console.log(newMember.displayName);
+    if(newMember.voiceChannelID === shintyokuID) {
+        const text = newMember.displayName + "さんが入室しました";
+        tweet(text);
+    } else if(oldMember.voiceChannelID === shintyokuID) {
+        const text = oldMember.displayName + "さんが退室しました";
+        tweet(text);
+    }
 });
 
 client.login(token);
+
+//function
+const tweet = (text) => {
+    twClient.post("statuses/update", {status: text}, (err, tweet, res) => {
+        console.log("tweet: "+ text);
+        if(err) {
+            console.log(err);
+        }
+    });
+}
+
