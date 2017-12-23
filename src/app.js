@@ -23,11 +23,12 @@ client.on('ready', () => {
 });
 
 client.on('voiceStateUpdate', (oldMember, newMember) => {
+    const formatedDate = formatDate();
     if(newMember.voiceChannelID === shintyokuID) {
-        const text = newMember.displayName + "さんが入室しました";
+        const text = newMember.displayName + "さんが入室しました\n" + formatedDate;
         tweet(text);
     } else if(oldMember.voiceChannelID === shintyokuID) {
-        const text = oldMember.displayName + "さんが退室しました";
+        const text = oldMember.displayName + "さんが退室しました\n"+ formatedDate;
         tweet(text);
     }
 });
@@ -51,5 +52,11 @@ const tweet = (text) => {
             console.log(err);
         }
     });
+}
+
+const formatDate = () => {
+    date = new Date();
+    date.setTime(date.getTime() + 32400000);
+    return date.getHours() +":"+ date.getMinutes() +":"+ date.getSeconds();
 }
 
