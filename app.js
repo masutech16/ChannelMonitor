@@ -25,7 +25,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
         const text = newMember.displayName + "さんが入室しました\n" + formatedDate;
         tweet(text);
         members.push({id: newMember.id, name: newMember.displayName});
-         console.log("in:"+ newMember.displayName);      
+         console.log("in:"+ newMember.displayName);
     } else if(oldMember.voiceChannelID === shintyokuID) {
         const text = oldMember.displayName + "さんが退室しました\n"+ formatedDate;
         tweet(text);
@@ -76,7 +76,7 @@ const tweet = (text) => {
 
 // express
 // クラッシュ対策のためにrootでアクセスを受け付ける
-app.get("/", (req, res) => {
+app.get("/express", (req, res) => {
     res.send("This is a channel monitor bot page");
 })
 
